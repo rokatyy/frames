@@ -54,7 +54,7 @@ def grpc_raise(err_cls):
             except grpc.RpcError as gerr:
                 err = err_cls('error in {}: {}'.format(fn.__name__, gerr))
                 err.cause = gerr
-                raise err
+                raise err from None
 
         return wrapper
 
